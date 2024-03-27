@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redirecting...</title>
+</head>
+<body>
+<script>
+window.onload = function() {
+  // Parse the URL parameters
+  const params = new URLSearchParams(window.location.search);
+  const oobCode = params.get('oobCode');
+  
+  // If there's an oobCode, redirect to your app with the appropriate action
+  if (oobCode) {
+    // Replace this URL with your app's URL scheme and pass the oobCode as a parameter
+    window.location.href = `rhnchatbot://?mode=action&oobCode=${oobCode}`;
+  } else {
+    // If no oobCode is present, redirect to an error page or handle it appropriately
+    window.location.href = 'error.html';
+  }
+}
+</script>
+</body>
+</html>
