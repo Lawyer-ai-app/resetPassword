@@ -8,16 +8,13 @@
 <body>
 <script>
 window.onload = function() {
-  // Parse the URL parameters
   const params = new URLSearchParams(window.location.search);
+  const mode = params.get('mode')
   const oobCode = params.get('oobCode');
-  
-  // If there's an oobCode, redirect to your app with the appropriate action
-  if (oobCode) {
-    // Replace this URL with your app's URL scheme and pass the oobCode as a parameter
-    window.location.href = `rhnchatbot://?mode=action&oobCode=${oobCode}`;
+
+  if (mode==='resetPassword' && oobCode) {
+    window.location.href = `rhnchatbot://${action}&oobCode=${oobCode}`;
   } else {
-    // If no oobCode is present, redirect to an error page or handle it appropriately
     window.location.href = 'error.html';
   }
 }
