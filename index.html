@@ -4,16 +4,42 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Redirecting...</title>
+<style>
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+    }
+    .mobile-message {
+      display: none;
+      color: red;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
+<div class="container">
+    <p class="mobile-message">Please open this link from a mobile device to reset your password.</p>
+  </div>
 <script>
 window.onload = function() {
+  function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+  if (!isMobileDevice()) {
+    const mobileMessage = document.querySelector('.mobile-message');
+    mobileMessage.style.display = 'block';
+    return
+  }
   const params = new URLSearchParams(window.location.search);
   const mode = params.get('mode')
   const oobCode = params.get('oobCode');
 
-  if (mode==='resetPassword' && oobCode) {
-    window.location.href = `rhnchatbot://${action}&oobCode=${oobCode}`;
+  if (oobCode) {
+    window.location.href = `rhnchatbot://${mode}?oobCode=${oobCode}`;
   } else {
     window.location.href = 'error.html';
   }
