@@ -72,10 +72,12 @@
               "https://api.moyasar.com/v1/applepay/initiate",
           },
           on_completed: function (payment) {
-            window.ReactNativeWebView.postMessage({
-              type: "payment",
-              data: payment,
-            });
+            window.ReactNativeWebView.postMessage(
+              JSON.stringify({
+                type: "payment",
+                data: payment,
+              })
+            );
           },
           credit_card: {
             save_card: true,
