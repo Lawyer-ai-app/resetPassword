@@ -63,13 +63,19 @@
           description: description,
           publishable_api_key:
             "pk_test_nkGZRHRzZM9sdvV8FiQumvDc1FBBvjdaQTrPWBHo",
-          callback_url: "https://rhnco-24a80.web.app/payment-result.html",
+          callback_url: "https://rhnco-24a80.web.app/payment-result.html?",
           methods: ["creditcard", "applepay", "stcpay"],
           apple_pay: {
             country: "SA",
             label: "RHN Lawyer",
             validate_merchant_url:
               "https://api.moyasar.com/v1/applepay/initiate",
+          },
+          on_completed: function (payment) {
+            window.ReactNativeWebView.postMessage({
+              type: "payment",
+              data: payment,
+            });
           },
           credit_card: {
             save_card: true,
