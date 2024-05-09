@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.moyasar.com/mpf/1.13.0/moyasar.css"
+    />
+    <script src="https://cdn.moyasar.com/mpf/1.13.0/moyasar.js"></script>
+    <title>RHN Payment</title>
+    <style>
+      .container {
+        max-width: 600px;
+        margin-top: 10px;
+      }
+      .mobile-message {
+        display: none;
+        color: red;
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <p class="mobile-message">
+        Please open this link from a mobile device with the app installed.
+      </p>
+    </div>
+    <div class="mysr-form"></div>
+    <script>
+      window.onload = function () {
+        function isMobileDevice() {
+          return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+            navigator.userAgent
+          );
+        }
+
+        if (!isMobileDevice()) {
+          const mobileMessage = document.querySelector(".mobile-message");
+          mobileMessage.style.display = "block";
+          return;
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        const amount = params.get("amount");
+        const description = params.get("description");
+        const lng = params.get("lng");
+
+        if (lng === "ar") {
+          document.documentElement.dir = "rtl";
+        } else {
+          document.documentElement.dir = "ltr";
+        }
+
+        Moyasar.init({
+          element: ".mysr-form",
+          language: lng,
+          amount: 10000,
+          currency: "SAR",
+          description: "string",
+          publishable_api_key:
+            "pk_test_3Pth5L8poxd3qzXkpKM1s3ciZQxV6s2w8krPMDo4",
+          callback_url: "rhnco-24a80.web.app/payment-result.html",
+          methods: ["creditcard", "applepay", "stcpay"],
+          on_completed: function (payment) {
+            console.log(JSON.stringify(payment, null, 2));
+          },
+          apple_pay: {
+            country: "SA",
+            label: "RHN Lawyer",
+            validate_merchant_url:
+              "https://api.moyasar.com/v1/applepay/initiate",
+          },
+          credit_card: {
+            save_card: true,
+          },
+        });
+      };
+    </script>
+  </body>
+</html>
