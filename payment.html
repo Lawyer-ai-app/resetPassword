@@ -58,16 +58,13 @@
         Moyasar.init({
           element: ".mysr-form",
           language: lng,
-          amount: 10000,
+          amount: amount,
           currency: "SAR",
-          description: "string",
+          description: description,
           publishable_api_key:
             "pk_test_3Pth5L8poxd3qzXkpKM1s3ciZQxV6s2w8krPMDo4",
-          callback_url: "rhnco-24a80.web.app/payment-result.html",
+          callback_url: "https://rhnco-24a80.web.app/payment-result.html",
           methods: ["creditcard", "applepay", "stcpay"],
-          on_completed: function (payment) {
-            console.log(JSON.stringify(payment, null, 2));
-          },
           apple_pay: {
             country: "SA",
             label: "RHN Lawyer",
