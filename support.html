@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zmeel Support</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 1rem;
+        }
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .accordion {
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .accordion-header {
+            background-color: #f8f8f8;
+            padding: 1rem;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
+            border: none;
+            color: black;
+        }
+        .accordion-content {
+            padding: 1rem;
+            display: none;
+        }
+        .contact-form {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 1rem;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #0056b3;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #f8f8f8;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .social-icons button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin-left: 0.5rem;
+        }
+        .error-message {
+            color: #d32f2f;
+            font-size: 0.875rem;
+            margin-top: -0.5rem;
+            margin-bottom: 0.5rem;
+            display: none;
+        }
+        .success-message {
+            color: #388e3c;
+            font-size: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <h1>Zmeel Support</h1>
+            <p>Your AI-powered assistant for Saudi Arabian labor law</p>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>Frequently Asked Questions</h2>
+            <div id="faq-container"></div>
+        </section>
+
+        <section>
+            <h2>Contact Support</h2>
+            <div class="contact-form">
+                <h3>Get in Touch</h3>
+                <p>We're here to help with any questions or concerns.</p>
+                <form id="contact-form">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <div id="name-error" class="error-message"></div>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <div id="email-error" class="error-message"></div>
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    <div id="message-error" class="error-message"></div>
+                    <button type="submit">Send Message</button>
+                </form>
+                <div id="success-message" class="success-message"></div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our AI Assistance</h2>
+            <p>
+                Zmeel's AI assistant is designed to provide quick and accurate information about Saudi Arabian labor law. Here's how it can help you:
+            </p>
+            <ul>
+                <li>Answer questions about employee rights and employer obligations</li>
+                <li>Explain complex legal terms in simple language</li>
+                <li>Provide information on recent changes in labor regulations</li>
+                <li>Offer guidance on common workplace issues</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Legal Assistance</h2>
+            <p>
+                While our AI can provide general information, some situations may require professional legal advice. Zmeel can connect you with experienced lawyers specializing in Saudi Arabian labor law.
+            </p>
+            <button id="find-lawyer-btn" style="background-color: transparent; border: 1px solid #0056b3; color: #0056b3;">Find a Lawyer</button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <p>&copy; 2024 Zmeel. All rights reserved.</p>
+            </div>
+            <div class="social-icons">
+                <button aria-label="Message"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg></button>
+                <button aria-label="Phone"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></button>
+                <button aria-label="Mail"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></button>
+                <button aria-label="Scale"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"></path><path d="M2 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"></path><path d="M7 21h10"></path><path d="M12 3v18"></path><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"></path></svg></button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ data
+        const faqData = [
+            {
+                question: 'How does the AI assistance work?',
+                answer: 'Our AI assistant uses advanced natural language processing to understand your labor law inquiries and provide accurate, up-to-date information based on Saudi Arabian labor regulations.'
+            },
+            {
+                question: 'Is my information kept confidential?',
+                answer: 'Yes, all information shared with Zmeel is kept strictly confidential and is used solely for the purpose of addressing your inquiries and improving our service.'
+            },
+            {
+                question: 'How accurate is the legal advice provided?',
+                answer: 'While our AI provides highly accurate information based on current Saudi Arabian labor laws, we always recommend consulting with a qualified lawyer for complex legal matters or official proceedings.'
+            },
+            {
+                question: 'How do I get connected with a lawyer?',
+                answer: 'If your case requires professional legal assistance, our app can recommend qualified lawyers specializing in Saudi Arabian labor law. You can then choose to connect with them directly through the app.'
+            }
+        ];
+
+        // Generate FAQ accordions
+        const faqContainer = document.getElementById('faq-container');
+        faqData.forEach((faq, index) => {
+            const accordion = document.createElement('div');
+            accordion.className = 'accordion';
+            accordion.innerHTML = `
+                <button class="accordion-header">${faq.question}</button>
+                <div class="accordion-content">${faq.answer}</div>
+            `;
+            faqContainer.appendChild(accordion);
+
+            const header = accordion.querySelector('.accordion-header');
+            const content = accordion.querySelector('.accordion-content');
+
+            header.addEventListener('click', () => {
+                content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // Form validation and submission
+        const contactForm = document.getElementById('contact-form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
+        const nameError = document.getElementById('name-error');
+        const emailError = document.getElementById('email-error');
+        const messageError = document.getElementById('message-error');
+        const successMessage = document.getElementById('success-message');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Reset error messages
+            nameError.style.display = 'none';
+            emailError.style.display = 'none';
+            messageError.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            const name = nameInput.value.trim();
+            const email = emailInput.value.trim();
+            const message = messageInput.value.trim();
+
+            let isValid = true;
+
+            if (name === '') {
+                nameError.textContent = 'Please enter your name.';
+                nameError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (email === '') {
+                emailError.textContent = 'Please enter your email address.';
+                emailError.style.display = 'block';
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                emailError.textContent = 'Please enter a valid email address.';
+                emailError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (message === '') {
+                messageError.textContent = 'Please enter your message.';
+                messageError.style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Simulating form submission
+                setTimeout(() => {
+                    successMessage.textContent = 'Thank you for your message. We will get back to you soon!';
+                    successMessage.style.display = 'block';
+                    contactForm.reset();
+                }, 1000);
+            }
+        });
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Find a Lawyer button
+        const findLawyerBtn = document.getElementById('find-lawyer-btn');
+        findLawyerBtn.addEventListener('click', function() {
+            alert('Redirecting to lawyer search page...');
+            // Add actual redirection logic here
+        });
+    </script>
+</body>
+</html>
